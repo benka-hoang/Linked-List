@@ -12,7 +12,7 @@ int main() {
 	ifstream inp("input.txt"); ofstream out("output.txt");
 	Node* pH = nullptr;
 	InputFile(inp, pH);
-	InsertEvenNumbers(pH);
+	ListofSum(pH);
 	OutputFile(out, pH);
 	Clean(pH);
 	inp.close(); out.close();

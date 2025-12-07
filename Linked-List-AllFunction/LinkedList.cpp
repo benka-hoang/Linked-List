@@ -132,3 +132,35 @@ void InsertEvenNumbers(Node*& pH) {
 	}
 	return;
 }
+
+void AddSortedList(Node*& pH, int x) {
+	if (pH == nullptr) return;
+	Node* pIns = new Node;
+	pIns->data = x, pIns->pNext = nullptr;
+	if (pH->data >= x) {
+		pIns->pNext = pH;
+		pH = pIns;
+		return;
+	}
+	Node* pCur = pH;
+	while (pCur->pNext != nullptr) {
+		if (pCur->pNext->data >= x) {
+			pIns->pNext = pCur->pNext;
+			pCur->pNext = pIns;
+			break;
+		}
+		pCur = pCur->pNext;
+	}
+	return;
+}
+
+void ListofSum(Node* pH) {
+	int sum = 0;
+	Node* pCur = pH;
+	while (pCur->pNext != nullptr) {
+		sum = sum + pCur->data;
+		pCur->data = sum;
+		pCur = pCur->pNext;
+	}
+	return;
+}

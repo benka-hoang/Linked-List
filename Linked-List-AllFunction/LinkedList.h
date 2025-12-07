@@ -20,3 +20,7 @@ void RemoveDuplicates(Node*& pH);
 void Reverse(Node*& pH);
 
 void InsertEvenNumbers(Node*& pH);
+
+void AddSortedList(Node*& pH, int x);
+
+void ListofSum(Node* pH);
