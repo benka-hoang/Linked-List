@@ -24,3 +24,7 @@ void InsertEvenNumbers(Node*& pH);
 void AddSortedList(Node*& pH, int x);
 
 void ListofSum(Node* pH);
+
+pair<Node*, Node*> Separate(Node* pH);
+
+Node* Union(Node* a, Node* b);

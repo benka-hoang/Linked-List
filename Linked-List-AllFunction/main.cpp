@@ -10,9 +10,11 @@ using namespace std;
 int main() {
 	//_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	ifstream inp("input.txt"); ofstream out("output.txt");
-	Node* pH = nullptr;
-	InputFile(inp, pH);
-	ListofSum(pH);
+	Node* a = nullptr;
+	Node* b = nullptr;
+	InputFile(inp, a);
+	InputFile(inp, b);
+	Node* pH = Union(a, b);
 	OutputFile(out, pH);
 	Clean(pH);
 	inp.close(); out.close();

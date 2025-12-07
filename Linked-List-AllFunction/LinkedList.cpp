@@ -164,3 +164,62 @@ void ListofSum(Node* pH) {
 	}
 	return;
 }
+
+pair<Node*, Node*> Separate(Node* pH) {
+	Node* pf = nullptr; 
+	Node* ps = nullptr;
+	if (pH == nullptr) return { pf, ps };
+	if (pH->pNext == nullptr) {
+		pf = pH;
+		return { pf, ps };
+	}
+	pf = pH, ps = pH->pNext;
+	Node* pfcur = pf;
+	Node* pscur = ps;
+	int type = 0;
+	Node* pCur = pH->pNext->pNext;
+	while (pCur != nullptr) {
+		if (type == 0) {
+			pfcur->pNext = pCur;
+			pfcur = pCur;
+		}
+		else {
+			pscur->pNext = pCur;
+			pscur = pCur;
+		}
+		pCur = pCur->pNext;
+		type = type ^ 1;
+	}
+	pfcur->pNext = nullptr;
+	pscur->pNext = nullptr;
+	return {pf, ps};
+}
+
+Node* Union(Node* a, Node* b) {
+	Node* pH;
+	if (a == nullptr) {
+		pH = b;
+		return pH;
+	}
+	if (b == nullptr) {
+		pH = a;
+		return pH;
+	}
+	Node* pa = a; pa = pa->pNext;
+	Node* pb = b; pb = pb->pNext;
+	pH = a; pH->pNext = b;
+	Node* pCur = b;
+	while (pa != nullptr & pb != nullptr){
+		pCur->pNext = pa; pa = pa->pNext;
+		pCur = pCur->pNext;
+		pCur->pNext = pb; pb = pb->pNext;
+		pCur = pCur->pNext;
+	}
+	if (pa != nullptr) {
+		pCur->pNext = pa;
+	}
+	else {
+		pCur->pNext = pb;
+	}
+	return pH;
+}
